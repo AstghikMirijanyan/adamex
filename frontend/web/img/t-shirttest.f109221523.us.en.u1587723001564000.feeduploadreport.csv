@@ -1,0 +1,6 @@
+Feed name,Feed Id,Customer Id,Upload time
+"t-shirt test","109221523","201886363","Apr 24, 2020 3:10 am PDT"
+
+Item Id,Line number,Message,Type,Values,Item title
+"222",,"Handling time is too high.",Warning,,
+"222",,"Transit time is too high.",Warning,,
