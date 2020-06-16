@@ -8,7 +8,7 @@
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Astghik Mirijanyan</p>
+                <p>Anjela Mirijanyan</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -32,12 +32,13 @@
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Продукты', 'icon' => 'dashboard', 'url' => ['/products/product']],
-                    ['label' => 'Заказы', 'icon' => 'dashboard', 'url' => ['/orders/order']],
+                    ['label' => 'Продукты', 'icon' => 'dashboard', 'url' => ['/products/products']],
+                    ['label' => 'Заказы', 'icon' => 'dashboard', 'url' => ['/cart/cart']],
                     ['label' => 'Картинки', 'icon' => 'dashboard', 'url' => ['/images/images']],
-                    ['label' => 'Цвета', 'icon' => 'dashboard', 'url' => ['/colors/color']],
-                    ['label' => 'Colors', 'icon' => 'dashboard', 'url' => ['/colors/color']],
-                    ['label' => 'Info', 'icon' => 'info', 'url' => ['/info/info']],
+                    ['label' => 'Цвета', 'icon' => 'dashboard', 'url' => ['/colors/colors']],
+                    ['label' => 'User', 'icon' => 'dashboard', 'url' => ['/user/user']],
+                    ['label' => 'Размер', 'icon' => 'dashboard', 'url' => ['/sizes/sizes']],
+                    ['label' => 'Меню', 'icon' => 'dashboard', 'url' => ['/menu/menu']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Some tools',

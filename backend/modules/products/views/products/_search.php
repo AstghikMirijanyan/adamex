@@ -24,7 +24,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'size_id') ?>
 
-    <?= $form->field($model, 'color_id') ?>
 
     <?= $form->field($model, 'paren_id') ?>
 
@@ -41,6 +40,12 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'price_tree_in_one') ?>
 
     <?php // echo $form->field($model, 'is_slider') ?>
+
+    <?php // echo $form->field($model, 'menu_id') ?>
+
+    <?php // echo $form->field($model, 'is_sale') ?>
+
+    <?php // echo $form->field($model, 'is_buy') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

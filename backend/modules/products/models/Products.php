@@ -6,6 +6,7 @@ use backend\modules\cart\models\Cart;
 use backend\modules\colors\models\Colors;
 use backend\modules\sizes\models\Sizes;
 use Yii;
+use yii\widgets\Menu;
 
 /**
  * This is the model class for table "products".
@@ -19,14 +20,19 @@ use Yii;
  * @property int $sale_price
  * @property string $created_date
  * @property string|null $description
+ * @property string|null $short_description
  * @property int|null $price_two_in_one
  * @property int $price_tree_in_one
  * @property string $is_slider
+ * @property string $color
+ * @property int $menu_id
+ * @property string $is_sale
+ * @property string $is_buy
  *
  * @property Cart[] $carts
  * @property Sizes $priceTwoInOne
  * @property Sizes $priceTreeInOne
- * @property Colors $color
+ * @property Menu $menu
  */
 class Products extends \yii\db\ActiveRecord
 {
@@ -44,14 +50,14 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'sale_price', 'price_tree_in_one'], 'required'],
-            [['size_id', 'color_id', 'paren_id', 'price', 'sale_price', 'price_two_in_one', 'price_tree_in_one'], 'integer'],
-            [['created_date'], 'safe'],
-            [['is_slider'], 'string'],
-            [['name', 'description'], 'string', 'max' => 255],
+            [['name', 'price', 'sale_price', 'price_tree_in_one', 'menu_id'], 'required'],
+            [['size_id', 'color_id', 'paren_id', 'price', 'sale_price', 'price_two_in_one', 'price_tree_in_one', 'menu_id'], 'integer'],
+            [['created_date','color'], 'safe'],
+            [['is_slider', 'is_sale', 'is_buy'], 'string'],
+            [['name', 'description','short_description'], 'string', 'max' => 255],
             [['price_two_in_one'], 'exist', 'skipOnError' => true, 'targetClass' => Sizes::className(), 'targetAttribute' => ['price_two_in_one' => 'id']],
             [['price_tree_in_one'], 'exist', 'skipOnError' => true, 'targetClass' => Sizes::className(), 'targetAttribute' => ['price_tree_in_one' => 'id']],
-            [['color_id'], 'exist', 'skipOnError' => true, 'targetClass' => Colors::className(), 'targetAttribute' => ['color_id' => 'id']],
+            [['menu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['menu_id' => 'id']],
         ];
     }
 
@@ -64,15 +70,19 @@ class Products extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'size_id' => Yii::t('app', 'Size ID'),
-            'color_id' => Yii::t('app', 'Color ID'),
+            'color' => Yii::t('app', 'Color'),
             'paren_id' => Yii::t('app', 'Paren ID'),
             'price' => Yii::t('app', 'Price'),
             'sale_price' => Yii::t('app', 'Sale Price'),
             'created_date' => Yii::t('app', 'Created Date'),
             'description' => Yii::t('app', 'Description'),
+            'short_description' => Yii::t('app', 'Short Description'),
             'price_two_in_one' => Yii::t('app', 'Price Two In One'),
             'price_tree_in_one' => Yii::t('app', 'Price Tree In One'),
             'is_slider' => Yii::t('app', 'Is Slider'),
+            'menu_id' => Yii::t('app', 'Menu ID'),
+            'is_sale' => Yii::t('app', 'Is Sale'),
+            'is_buy' => Yii::t('app', 'Is Buy'),
         ];
     }
 
@@ -111,8 +121,15 @@ class Products extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getColor()
+
+
+    /**
+     * Gets query for [[Menu]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMenu()
     {
-        return $this->hasOne(Colors::className(), ['id' => 'color_id']);
+        return $this->hasOne(Menu::className(), ['id' => 'menu_id']);
     }
 }

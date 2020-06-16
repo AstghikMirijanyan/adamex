@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use backend\modules\menu\models\Menu;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -74,7 +75,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $menu= Menu::find()->asArray()->all();
+
+        return $this->render('index',[
+            'menu' => $menu
+        ]);
     }
 
     /**

@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\modules\colors\models;
+namespace backend\modules\menu\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\colors\models\Colors;
+use backend\modules\menu\models\Menu;
 
 /**
- * ColorsControl represents the model behind the search form of `backend\modules\colors\models\Colors`.
+ * MenuControl represents the model behind the search form of `backend\modules\menu\models\Menu`.
  */
-class ColorsControl extends Colors
+class MenuControl extends Menu
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class ColorsControl extends Colors
     {
         return [
             [['id'], 'integer'],
-            [['color_name', 'img_name', 'alt'], 'safe'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ColorsControl extends Colors
      */
     public function search($params)
     {
-        $query = Colors::find();
+        $query = Menu::find();
 
         // add conditions that should always apply here
 
@@ -61,9 +61,7 @@ class ColorsControl extends Colors
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'color_name', $this->color_name])
-            ->andFilterWhere(['like', 'img_name', $this->img_name])
-            ->andFilterWhere(['like', 'alt', $this->alt]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

@@ -1,18 +1,18 @@
 <?php
 
-namespace backend\modules\colors\controllers;
+namespace backend\modules\menu\controllers;
 
 use Yii;
-use backend\modules\colors\models\Colors;
-use backend\modules\colors\models\ColorsControl;
+use backend\modules\menu\models\Menu;
+use backend\modules\menu\models\MenuControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ColorsController implements the CRUD actions for Colors model.
+ * MenuController implements the CRUD actions for Menu model.
  */
-class ColorsController extends Controller
+class MenuController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class ColorsController extends Controller
     }
 
     /**
-     * Lists all Colors models.
+     * Lists all Menu models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ColorsControl();
+        $searchModel = new MenuControl();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ColorsController extends Controller
     }
 
     /**
-     * Displays a single Colors model.
+     * Displays a single Menu model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class ColorsController extends Controller
     }
 
     /**
-     * Creates a new Colors model.
+     * Creates a new Menu model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Colors();
+        $model = new Menu();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class ColorsController extends Controller
     }
 
     /**
-     * Updates an existing Colors model.
+     * Updates an existing Menu model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class ColorsController extends Controller
     }
 
     /**
-     * Deletes an existing Colors model.
+     * Deletes an existing Menu model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class ColorsController extends Controller
     }
 
     /**
-     * Finds the Colors model based on its primary key value.
+     * Finds the Menu model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Colors the loaded model
+     * @return Menu the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Colors::findOne($id)) !== null) {
+        if (($model = Menu::findOne($id)) !== null) {
             return $model;
         }
 

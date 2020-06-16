@@ -1,3 +1,6 @@
+<?php
+$menu = \backend\modules\menu\models\Menu::find()->asArray()->all();
+?>
 <div class="nav-item">
     <div class="" style="margin-left: 6%">
         <div class="nav-depart">
@@ -6,14 +9,15 @@
                 <i class="ti-menu"></i>
                 <span><?= Yii::t('app', 'Каталог')?></span>
                 <ul class="depart-hover">
-                    <li class="active"><a href="#">Women’s Clothing</a></li>
-                    <li><a href="#">Men’s Clothing</a></li>
-                    <li><a href="#">Underwear</a></li>
-                    <li><a href="#">Kid's Clothing</a></li>
-                    <li><a href="#">Brand Fashion</a></li>
-                    <li><a href="#">Accessories/Shoes</a></li>
-                    <li><a href="#">Luxury Brands</a></li>
-                    <li><a href="#">Brand Outdoor Apparel</a></li>
+                    <?php
+                    if (!empty($menu)){
+                        foreach ($menu as $item){
+                            ?>
+                            <li><a href="<?=$item['id']?>"><?=$item['name']?></a></li>
+                    <?php
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

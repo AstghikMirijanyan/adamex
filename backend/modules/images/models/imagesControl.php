@@ -17,7 +17,7 @@ class imagesControl extends Images
     public function rules()
     {
         return [
-            [['id', 'size_id', 'color_id', 'product_id'], 'integer'],
+            [['id', 'size_id', 'product_id'], 'integer'],
             [['image', 'main_image'], 'safe'],
         ];
     }

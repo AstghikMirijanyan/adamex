@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . 'Shophia' . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . 'Adamex' . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
@@ -23,23 +23,17 @@ use yii\helpers\Html;
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-<!--                        <span class="label label-success"> --><?//= \backend\widgets\messages\messagesWidget::widget(['count' => 'count']);?><!--</a></span>-->
                     </a>
-<!--                --><?//= \backend\widgets\messages\messagesWidget::widget(); ?>
                 </li>
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-<!--                        <span class="label label-warning">--><?//= \backend\widgets\user\userWidget::widget(['info' => 'all_count']);?><!--</span>-->
                     </a>
                     <ul class="dropdown-menu">
-<!--                        <li class="header">You have --><?//= \backend\widgets\user\userWidget::widget(['info' => 'all_count']);?><!-- notifications</li>-->
                         <li>
-                            <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li>
                                     <a href="#">
-<!--                                        <i class="fa fa-users text-aqua"></i> --><?//= \backend\widgets\user\userWidget::widget(['info' => 'user_count']);?><!--  registred users-->
                                     </a>
                                 </li>
                                 <li>
@@ -152,7 +146,7 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Astghik Mirijanyan</span>
+                        <span class="hidden-xs">Anjela Mirijanyan</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->

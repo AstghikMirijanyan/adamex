@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\colors\models\Colors */
+/* @var $model backend\modules\menu\models\Menu */
 
-$this->title = Yii::t('app', 'Create Colors');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Colors'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Menu');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Menus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="colors-create">
+<div class="menu-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

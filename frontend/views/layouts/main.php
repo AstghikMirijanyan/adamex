@@ -49,8 +49,10 @@ AppAsset::register($this);
                             <a href="#"><img src="img/footer-logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
+                            <li>Address:г.Ростов-на-Дону
+                                ул. Белорусская 199а</li>
+                            <li>Phone:  +7(999)695-53-03 </li>
+                            <li>Phone:  +7(905)453-02-03 </li>
                             <li>Email: hello.colorlib@gmail.com</li>
                         </ul>
                         <div class="footer-social">
@@ -100,9 +102,7 @@ AppAsset::register($this);
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="copyright-text">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This site is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="astghik.mirijanyan@gmail.com" target="_blank">Astghik</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                         <div class="payment-pic">
                             <img src="img/payment-method.png" alt="">

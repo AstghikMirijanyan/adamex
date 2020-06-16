@@ -1,27 +1,26 @@
 <?php
 
-namespace backend\modules\sizes\models;
+namespace backend\modules\menu\models;
 
 use backend\modules\products\models\Products;
 use Yii;
 
 /**
- * This is the model class for table "sizes".
+ * This is the model class for table "menu".
  *
  * @property int $id
  * @property string $name
  *
  * @property Products[] $products
- * @property Products[] $products0
  */
-class Sizes extends \yii\db\ActiveRecord
+class Menu extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'sizes';
+        return 'menu';
     }
 
     /**
@@ -31,7 +30,7 @@ class Sizes extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['image'], 'string', 'max' => 500],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -53,16 +52,6 @@ class Sizes extends \yii\db\ActiveRecord
      */
     public function getProducts()
     {
-        return $this->hasMany(Products::className(), ['price_two_in_one' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Products0]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProducts0()
-    {
-        return $this->hasMany(Products::className(), ['price_tree_in_one' => 'id']);
+        return $this->hasMany(Products::className(), ['menu_id' => 'id']);
     }
 }

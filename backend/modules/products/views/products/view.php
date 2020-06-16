@@ -41,6 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'price_two_in_one',
             'price_tree_in_one',
             'is_slider',
+            'menu_id',
+            'is_sale',
+            'is_buy',
         ],
     ]) ?>
 

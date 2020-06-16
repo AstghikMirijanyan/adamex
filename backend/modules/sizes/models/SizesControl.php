@@ -17,7 +17,8 @@ class SizesControl extends Sizes
     public function rules()
     {
         return [
-            [['id', 'two_in_one', 'tree_in_one'], 'integer'],
+            [['id'], 'integer'],
+            [['name'], 'string'],
         ];
     }
 
@@ -58,8 +59,7 @@ class SizesControl extends Sizes
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'two_in_one' => $this->two_in_one,
-            'tree_in_one' => $this->tree_in_one,
+            'name' => $this->name,
         ]);
 
         return $dataProvider;

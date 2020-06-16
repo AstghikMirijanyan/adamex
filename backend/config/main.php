@@ -5,6 +5,7 @@ $params = array_merge(
     require __DIR__ . '/params.php',
     require __DIR__ . '/params-local.php'
 );
+//$baseUrl = str_replace('/backend/web', '', (new \yii\web\Request())->getBaseUrl());
 
 return [
     'id' => 'app-backend',
@@ -19,7 +20,7 @@ return [
             'class' => 'backend\modules\sizes\Sizes',
         ],
         'images' => [
-            'class' => 'backend\modules\images\Image',
+            'class' => 'backend\modules\images\Images',
         ],
         'user' => [
             'class' => 'backend\modules\user\User',
@@ -30,18 +31,14 @@ return [
         'cart' => [
             'class' => 'backend\modules\cart\Cart',
         ],
+        'menu' => [
+            'class' => 'backend\modules\menu\Menu',
+        ],
     ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
-//        'view' => [
-//            'theme' => [
-//                'pathMap' => [
-//                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
-//                ],
-//            ],
-//        ],
         'assetManager' => [
             'bundles' => [
                 'dmstr\web\AdminLteAsset' => [
@@ -77,14 +74,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

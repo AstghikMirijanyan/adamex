@@ -2,6 +2,9 @@
 
 namespace backend\modules\products\controllers;
 
+use backend\modules\images\models\Images;
+use backend\modules\menu\models\Menu;
+use backend\modules\sizes\models\Sizes;
 use Yii;
 use backend\modules\products\models\Products;
 use backend\modules\products\models\ProductControl;
@@ -65,6 +68,10 @@ class ProductsController extends Controller
     public function actionCreate()
     {
         $model = new Products();
+        $modelImages = new Images();
+        $modelSizes = new Sizes();
+        $modelMenu  = new Menu();
+        $menu_items = Menu::find()->asArray()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +79,10 @@ class ProductsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'modelImages' => $modelImages,
+            'modelSizes' => $modelSizes,
+            'modelMenu' => $modelMenu,
+            'menu_items' => $menu_items
         ]);
     }
 
