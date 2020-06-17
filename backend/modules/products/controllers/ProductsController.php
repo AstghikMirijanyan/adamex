@@ -70,11 +70,21 @@ class ProductsController extends Controller
         $model = new Products();
         $modelImages = new Images();
         $modelSizes = new Sizes();
-        $modelMenu  = new Menu();
+        $modelMenu = new Menu();
         $menu_items = Menu::find()->asArray()->all();
+        $size_items = Sizes::find()->asArray()->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (!empty(Yii::$app->request->post())) {
+            $post = Yii::$app->request->post();
+            $productsModel = ['Products' => $post['Products']];
+            $productsModel['Products']['color'] = $post['Product']['color'] ?: "";
+            $productsModel['Products']['menu_id'] = $post['Menu']['name'] ?: "";
+            $productsModel['Products']['size_id'] = $post['Sizes']['name'] ?: "";
+
+            $model->load($productsModel);
+            if ($model->validate(false) && $model->save(false)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
@@ -82,7 +92,8 @@ class ProductsController extends Controller
             'modelImages' => $modelImages,
             'modelSizes' => $modelSizes,
             'modelMenu' => $modelMenu,
-            'menu_items' => $menu_items
+            'menu_items' => $menu_items,
+            'size_items' => $size_items
         ]);
     }
 

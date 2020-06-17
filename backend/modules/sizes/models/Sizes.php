@@ -31,7 +31,6 @@ class Sizes extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['image'], 'string', 'max' => 500],
         ];
     }
 

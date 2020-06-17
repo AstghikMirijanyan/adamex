@@ -22,6 +22,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         'model' => $model,
         'modelSizes' => $modelSizes,
         'modelMenu' => $modelMenu,
+        'size_items' => $size_items
+
 
     ]) ?>
 

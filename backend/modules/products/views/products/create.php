@@ -21,7 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'modelImages' => $modelImages,
         'modelSizes' => $modelSizes,
         'modelMenu' => $modelMenu,
-        'menu_items' => $menu_items
+        'menu_items' => $menu_items,
+        'size_items' => $size_items
 
     ]) ?>
 

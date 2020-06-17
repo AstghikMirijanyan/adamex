@@ -3,7 +3,6 @@
 namespace backend\modules\products\models;
 
 use backend\modules\cart\models\Cart;
-use backend\modules\colors\models\Colors;
 use backend\modules\sizes\models\Sizes;
 use Yii;
 use yii\widgets\Menu;
@@ -14,7 +13,6 @@ use yii\widgets\Menu;
  * @property int $id
  * @property string $name
  * @property int|null $size_id
- * @property int|null $color_id
  * @property int|null $paren_id
  * @property int $price
  * @property int $sale_price
@@ -22,7 +20,7 @@ use yii\widgets\Menu;
  * @property string|null $description
  * @property string|null $short_description
  * @property int|null $price_two_in_one
- * @property int $price_tree_in_one
+ * @property int|null $price_tree_in_one
  * @property string $is_slider
  * @property string $color
  * @property int $menu_id
@@ -50,11 +48,11 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'sale_price', 'price_tree_in_one', 'menu_id'], 'required'],
-            [['size_id', 'color_id', 'paren_id', 'price', 'sale_price', 'price_two_in_one', 'price_tree_in_one', 'menu_id'], 'integer'],
+            [['name', 'price', 'sale_price', 'menu_id'], 'required'],
+            [['size_id', 'paren_id', 'price', 'sale_price', 'price_two_in_one', 'price_tree_in_one', 'menu_id'], 'integer'],
             [['created_date','color'], 'safe'],
             [['is_slider', 'is_sale', 'is_buy'], 'string'],
-            [['name', 'description','short_description'], 'string', 'max' => 255],
+            [['name', 'description','short_description'], 'string'],
             [['price_two_in_one'], 'exist', 'skipOnError' => true, 'targetClass' => Sizes::className(), 'targetAttribute' => ['price_two_in_one' => 'id']],
             [['price_tree_in_one'], 'exist', 'skipOnError' => true, 'targetClass' => Sizes::className(), 'targetAttribute' => ['price_tree_in_one' => 'id']],
             [['menu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['menu_id' => 'id']],

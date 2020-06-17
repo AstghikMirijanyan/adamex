@@ -35,10 +35,9 @@
                     ['label' => 'Продукты', 'icon' => 'dashboard', 'url' => ['/products/products']],
                     ['label' => 'Заказы', 'icon' => 'dashboard', 'url' => ['/cart/cart']],
                     ['label' => 'Картинки', 'icon' => 'dashboard', 'url' => ['/images/images']],
-                    ['label' => 'Цвета', 'icon' => 'dashboard', 'url' => ['/colors/colors']],
                     ['label' => 'User', 'icon' => 'dashboard', 'url' => ['/user/user']],
                     ['label' => 'Размер', 'icon' => 'dashboard', 'url' => ['/sizes/sizes']],
-                    ['label' => 'Меню', 'icon' => 'dashboard', 'url' => ['/menu/menu']],
+                    ['label' => 'Категория', 'icon' => 'dashboard', 'url' => ['/menu/menu']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Some tools',

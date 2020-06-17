@@ -34,6 +34,12 @@ return [
         'menu' => [
             'class' => 'backend\modules\menu\Menu',
         ],
+        'redactor' => [
+            'class' => 'yii\redactor\RedactorModule',
+            'uploadDir' => '@frontend/web/images/products',
+            'uploadUrl' => '/frontend/web/images/products',
+            'imageAllowExtensions' => ['jpg', 'png', 'jpeg', 'gif']
+        ],
     ],
     'components' => [
         'request' => [
