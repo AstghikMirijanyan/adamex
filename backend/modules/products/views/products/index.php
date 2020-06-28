@@ -3,11 +3,12 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\products\models\ProductControl */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Products');
+$this->title = Yii::t('app', 'Товары');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="products-index">
@@ -15,11 +16,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Products'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Создание продуктов'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php
+    // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,14 +29,68 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'name',
-            'size_id',
+//            'id',
+            [
+                'attribute' => 'name',
+                'label' => 'Название',
+            ],
+            [
+                'attribute' => 'size',
+                'label' => 'Размер',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    if (!empty($data['productSizes'])) {
+                        $sizes = '';
+                        foreach ($data['productSizes'] as $size) {
+                            $sizes .= '<p>' . $size['size']['name'] . '</p>';
+                        }
+                        return $sizes;
+                    } else {
+                        return "-";
+                    }
+                }
+            ],
+            [
+                'attribute' => 'color',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    if (!empty($data['productColors'])) {
+                        $colors = '';
+                        foreach ($data['productColors'] as $color) {
+                            $color_show = $color['color']['color_name'];
+                            $colors .= "<p class='color_div' style='background-color: $color_show'></p>";
+                        }
+                        return $colors;
+                    } else {
+                        return "-";
+                    }
+                }],
+            [
+                'attribute' => 'menu',
+                'label' => 'Категория',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    if (!empty($data['productMenus'])) {
+                        $menus = '';
+                       foreach ($data['productMenus'] as $menu){
+                           $menus .= '<p style="background-color: ">' . $menu['menu']['name'] . '</p>';
+                       }
+                       return $menus;
+                    } else {
+                        return "-";
+                    }
+                }
+
+            ],
+            [
+                'attribute' => 'images',
+                'value' => 'images.size_id'
+            ],
             //'paren_id',
-            //'price',
-            //'sale_price',
-            //'created_date',
-            //'description',
+            'price',
+            'sale_price',
+//            'created_date',
+//            'description',
             //'price_two_in_one',
             //'price_tree_in_one',
             //'is_slider',

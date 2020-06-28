@@ -2,11 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\helpers;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\products\models\Products */
 /* @var $modelImages backend\modules\images\models\Images */
 /* @var $modelSizes backend\modules\sizes\models\Sizes */
+/* @var $modelMenu backend\modules\menu\models\Menu */
+/* @var $modelColors backend\modules\colors\models\Colors */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -109,10 +113,16 @@ use yii\widgets\ActiveForm;
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-12">
-
-                                <?= $form->field($modelMenu, 'name')->dropDownList(
-                                    \yii\helpers\ArrayHelper::map($menu_items, 'id', 'name')
-                                ) ?>
+                                <?=  Select2::widget([
+                                    'name' => 'Menu[name]',
+                                    'data' => helpers\ArrayHelper::map($menu_items, 'id', 'name'),
+                                    'theme' => Select2::THEME_DEFAULT,
+                                    'options' => ['placeholder' => 'Select a menu ...', 'multiple' => true],
+                                    'pluginOptions' => [
+                                        'allowClear' => true
+                                    ],
+                                ]);
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -124,15 +134,16 @@ use yii\widgets\ActiveForm;
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="row clearfix">
-                                    <?php
-                                    echo \kartik\color\ColorInput::widget([
-                                        'name' => 'Product[color]',
-                                        'value' => $model->color,
-                                        'attribute' => 'saturation',
-                                        'options' => ['readonly' => false,'required' => true]
+                                    <?=  Select2::widget([
+                                        'name' => 'Color[color_name]',
+                                        'data' => helpers\ArrayHelper::map($color_items, 'id', 'color_name'),
+                                        'theme' => Select2::THEME_DEFAULT,
+                                        'options' => ['multiple' => true,'style' => 'background-color:red'],
+                                        'pluginOptions' => [
+                                            'allowClear' => true
+                                        ],
                                     ]);
                                     ?>
-
                                 </div>
                             </div>
                         </div>
@@ -144,9 +155,18 @@ use yii\widgets\ActiveForm;
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-12">
-                                <?= $form->field($modelSizes, 'name')->dropDownList(
-                                    \yii\helpers\ArrayHelper::map($size_items, 'id', 'name')
-                                ) ?>
+
+                                <?=  Select2::widget([
+                                    'name' => 'Sizes[name]',
+                                    'data' => helpers\ArrayHelper::map($size_items, 'id', 'name'),
+                                    'theme' => Select2::THEME_DEFAULT,
+                                    'options' => ['multiple' => true,'style' => 'background-color:red'],
+                                    'pluginOptions' => [
+                                        'allowClear' => true
+                                    ],
+                                ]);
+                                ?>
+
                             </div>
                         </div>
                     </div>

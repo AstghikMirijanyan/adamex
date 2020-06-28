@@ -22,7 +22,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'size_id') ?>
 
 
     <?= $form->field($model, 'paren_id') ?>

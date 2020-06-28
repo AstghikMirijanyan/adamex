@@ -34,7 +34,7 @@
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Продукты', 'icon' => 'dashboard', 'url' => ['/products/products']],
                     ['label' => 'Заказы', 'icon' => 'dashboard', 'url' => ['/cart/cart']],
-                    ['label' => 'Картинки', 'icon' => 'dashboard', 'url' => ['/images/images']],
+//                    ['label' => 'Картинки', 'icon' => 'dashboard', 'url' => ['/images/images']],
                     ['label' => 'User', 'icon' => 'dashboard', 'url' => ['/user/user']],
                     ['label' => 'Размер', 'icon' => 'dashboard', 'url' => ['/sizes/sizes']],
                     ['label' => 'Категория', 'icon' => 'dashboard', 'url' => ['/menu/menu']],

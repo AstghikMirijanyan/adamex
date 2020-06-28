@@ -3,6 +3,7 @@
 namespace backend\modules\sizes\models;
 
 use backend\modules\products\models\Products;
+use backend\modules\productSizes\ProductSizes;
 use Yii;
 
 /**
@@ -11,6 +12,7 @@ use Yii;
  * @property int $id
  * @property string $name
  *
+ * @property ProductSizes[] $productSizes
  * @property Products[] $products
  * @property Products[] $products0
  */
@@ -31,6 +33,7 @@ class Sizes extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -43,6 +46,16 @@ class Sizes extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
         ];
+    }
+
+    /**
+     * Gets query for [[ProductSizes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProductSizes()
+    {
+        return $this->hasMany(ProductSizes::className(), ['size_id' => 'id']);
     }
 
     /**

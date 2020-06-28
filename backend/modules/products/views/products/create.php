@@ -7,6 +7,7 @@ use yii\helpers\Html;
 /* @var $modelImages backend\modules\images\models\Images */
 /* @var $modelSizes backend\modules\sizes\models\Sizes */
 /* @var $modelMenu backend\modules\menu\models\Menu */
+/* @var $modelColors backend\modules\colors\models\Colors */
 
 $this->title = Yii::t('app', 'Создание продуктов');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['index']];
@@ -20,9 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'modelImages' => $modelImages,
         'modelSizes' => $modelSizes,
+        'modelColors' => $modelColors,
         'modelMenu' => $modelMenu,
         'menu_items' => $menu_items,
-        'size_items' => $size_items
+        'size_items' => $size_items,
+        'color_items' => $color_items
 
     ]) ?>
 

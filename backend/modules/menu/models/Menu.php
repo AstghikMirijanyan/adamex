@@ -2,7 +2,6 @@
 
 namespace backend\modules\menu\models;
 
-use backend\modules\products\models\Products;
 use Yii;
 
 /**
@@ -11,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string $name
  *
- * @property Products[] $products
+ * @property ProductMenu[] $productMenus
  */
 class Menu extends \yii\db\ActiveRecord
 {
@@ -40,18 +39,18 @@ class Menu extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
+            'id' => 'ID',
+            'name' => 'Name',
         ];
     }
 
     /**
-     * Gets query for [[Products]].
+     * Gets query for [[ProductMenus]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProducts()
+    public function getProductMenus()
     {
-        return $this->hasMany(Products::className(), ['menu_id' => 'id']);
+        return $this->hasMany(ProductMenu::className(), ['menu_id' => 'id']);
     }
 }

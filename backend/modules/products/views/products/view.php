@@ -31,8 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'size_id',
-            'paren_id',
+//            'paren_id',
             'price',
             'sale_price',
             'created_date',
@@ -40,7 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'price_two_in_one',
             'price_tree_in_one',
             'is_slider',
-            'menu_id',
             'is_sale',
             'is_buy',
         ],
