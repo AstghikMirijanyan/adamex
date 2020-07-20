@@ -24,7 +24,10 @@
         "kartik-v/yii2-widget-colorinput": "dev-master",
         "yiidoc/yii2-redactor": "*",
         "kartik-v/yii2-widget-select2": "dev-master",
-        "yiisoft/yii2-bootstrap4": "@dev"
+        "yiisoft/yii2-bootstrap4": "@dev",
+        "elisevgeniy/yii2-ffmpeg": "*",
+        "php-ffmpeg/php-ffmpeg": "^0.16.0",
+        "yiisoft/yii2-imagine": "^2.2"
 
     },
     "require-dev": {

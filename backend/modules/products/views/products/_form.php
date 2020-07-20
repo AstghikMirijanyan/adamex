@@ -74,9 +74,9 @@ use yii\helpers;
                                         </div>
                                     </div>
                                 </div>
-                                <?= $form->field($model, 'is_sale')->dropDownList(['0', '1',], ['prompt' => ''])->label('Продажа?') ?>
-                                <?= $form->field($model, 'is_slider')->dropDownList(['0', '1',], ['prompt' => ''])->label('В слайдере?') ?>
-                                <?= $form->field($model, 'is_buy')->dropDownList(['0', '1',], ['prompt' => ''])->label('СЕЙЧАС ПОКУПАЮТ?') ?>
+                                <?= $form->field($model, 'is_sale')->dropDownList(['0', '1'])->label('Продажа?') ?>
+                                <?= $form->field($model, 'is_slider')->dropDownList(['0', '1'])->label('В слайдере?') ?>
+                                <?= $form->field($model, 'is_buy')->dropDownList(['0', '1'])->label('СЕЙЧАС ПОКУПАЮТ?') ?>
                                 <?php $form->field($model, 'created_date')->textInput()->label('Дата создания') ?>
                             </div>
                         </div>
@@ -113,6 +113,7 @@ use yii\helpers;
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-12">
+
                                 <?=  Select2::widget([
                                     'name' => 'Menu[name]',
                                     'data' => helpers\ArrayHelper::map($menu_items, 'id', 'name'),
@@ -134,13 +135,14 @@ use yii\helpers;
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="row clearfix">
+
                                     <?=  Select2::widget([
                                         'name' => 'Color[color_name]',
                                         'data' => helpers\ArrayHelper::map($color_items, 'id', 'color_name'),
                                         'theme' => Select2::THEME_DEFAULT,
-                                        'options' => ['multiple' => true,'style' => 'background-color:red'],
+                                        'options' => ['multiple' => true,"style" => "background-color:red"],
                                         'pluginOptions' => [
-                                            'allowClear' => true
+                                            'allowClear' => true,
                                         ],
                                     ]);
                                     ?>
@@ -188,7 +190,7 @@ use yii\helpers;
 
                                     if (!$model->isNewRecord) {
 
-                                        $model_image = \backend\modules\images\models\Images::find()->where(['product_id' => $model->id])->orderBy('sort')->all();
+                                        $model_image = \backend\modules\images\models\Images::find()->where(['product_id' => $model->id])->all();
 
                                         if (!empty($model_image)) {
 

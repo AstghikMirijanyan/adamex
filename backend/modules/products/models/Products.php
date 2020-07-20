@@ -112,7 +112,7 @@ class Products extends \yii\db\ActiveRecord
      */
     public function getProductColors()
     {
-        return $this->hasMany(ProductColor::className(), ['product_id' => 'id'])->with(['color']);
+        return $this->hasMany(ProductColor::className(), ['product_id' => 'id']);
     }
 
     /**
@@ -122,7 +122,7 @@ class Products extends \yii\db\ActiveRecord
      */
     public function getProductMenus()
     {
-        return $this->hasMany(ProductMenu::className(), ['product_id' => 'id'])->with(['menu']);
+        return $this->hasMany(ProductMenu::className(), ['product_id' => 'id']);
     }
 
     /**
@@ -132,7 +132,7 @@ class Products extends \yii\db\ActiveRecord
      */
     public function getProductSizes()
     {
-        return $this->hasMany(ProductSizes::className(), ['product_id' => 'id'])->with(['size']);
+        return $this->hasMany(ProductSizes::className(), ['product_id' => 'id']);
     }
 
     /**

@@ -413,12 +413,9 @@ ol {
 }
 
 .inner-header {
-	padding: 39px 0;
+	padding-top: 80px
 }
 
-.inner-header .logo {
-	padding: 12px 0;
-}
 
 .inner-header .logo a {
 	display: inline-block;
@@ -4310,5 +4307,8 @@ ol {
 	.benefit-items .single-benefit {
 		padding-left: 15px;
 		padding-right: 15px;
+	}
+	.input__search{
+		position: unset !important;
 	}
 }

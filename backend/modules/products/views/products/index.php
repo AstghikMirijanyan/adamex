@@ -1,5 +1,6 @@
 <?php
 
+use backend\modules\images\models\Images;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -84,11 +85,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'images',
-                'value' => 'images.size_id'
+                'format' => 'raw',
+                'value' => function ($data) {
+                    if (!empty($data['images'])) {
+                        $html = '';
+                       foreach ($data['images'] as $image){
+                           $html .= Html::img(Yii::$app->homeUrl.'../../frontend/web/images/products/' . $image['image'],['style' => ['max-height'=>'120px','max-width' => '120px'] ,'class' => 'img img-responsive']);
+
+                       }
+                       return $html;
+                    } else {
+                        return "-";
+                    }
+                }
             ],
             //'paren_id',
             'price',
-            'sale_price',
+//            'sale_price',
 //            'created_date',
 //            'description',
             //'price_two_in_one',

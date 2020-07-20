@@ -1,9 +1,13 @@
 <?php
+
 namespace frontend\controllers;
 
 use backend\modules\menu\models\Menu;
+use backend\modules\products\models\Products;
+use backend\modules\sizes\models\Sizes;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
+use Imagine\Image\Profile;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
@@ -75,10 +79,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $menu= Menu::find()->asArray()->all();
+        $menu = Menu::find()->asArray()->all();
+        $slider_products = Products::find()->with(['images','productMenus'=>function($data){
+            $data->with(['menu']);
+        }])->where(['is_slider' => '1'])->orderBy(['id' => SORT_DESC])->limit(5)->asArray()->all();
+        $sizes = Sizes::find()->asArray()->all();
 
-        return $this->render('index',[
-            'menu' => $menu
+        return $this->render('index', [
+            'menu' => $menu,
+            'slider_products' => $slider_products,
+            'sizes' => $sizes
         ]);
     }
 
@@ -221,8 +231,8 @@ class SiteController extends Controller
      * Verify email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionVerifyEmail($token)
     {

@@ -13,6 +13,7 @@ use backend\modules\products\models\Products;
  * @property int $color_id
  * @property int $product_id
  * @property string $image
+ * @property string $type
  * @property string|null $main_image
  *
  * @property Colors $color
@@ -38,7 +39,7 @@ class Images extends \yii\db\ActiveRecord
     {
         return [
             [['image'],'filter','filter'=>'\yii\helpers\HtmlPurifier::process'],
-            [['imageFile', 'imageFileMulty'], 'safe'],
+            [['imageFile', 'imageFileMulty','type'], 'safe'],
             [['imageFile'], 'file', 'extensions'=>'jpg, gif, png', 'maxSize'=> 1000000], //max 1 mb
             [['imageFile'], 'image'],
             [['size_id', 'color_id', 'product_id', 'image'], 'required'],
