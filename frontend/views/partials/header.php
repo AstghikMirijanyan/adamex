@@ -22,8 +22,9 @@ use \yii\helpers\Url;
                     <?php
                     if (!empty($menu)){
                         foreach ($menu as $item){
+                            $menu_id = $item['id'];
                             ?>
-                            <li><a href="<?=$item['id']?>"><?=$item['name']?></a></li>
+                            <li><a href="<?= Url::to(["/shop?menu_id=$menu_id"])?>" ><?=$item['name']?></a></li>
                     <?php
                         }
                     }
@@ -33,11 +34,11 @@ use \yii\helpers\Url;
         </div>
         <nav class="nav-menu mobile-menu">
             <ul>
-                <li><a href="<?= (Url::to(['report/inventory-stock'])); ?>"><?= Yii::t('app','магазин')?></a></li>
-                <li><a href="<?= Url::to([''])?>"><?= Yii::t('app','Оплата и Доставка')?></a></li>
-                <li><a href="<?= Url::to([''])?>"><?= Yii::t('app','Новости и акции')?></a></li>
-                <li><a href="<?= Url::to([''])?>"><?= Yii::t('app','Отзывы')?></a></li>
-                <li><a href="<?= Url::to([''])?>"><?= Yii::t('app', 'Сотрудничество')?></a></li>
+                <li><a href="<?= Url::to(['/shop']) ?>"><?= Yii::t('app','магазин')?></a></li>
+                <li><a href="<?= Url::to(['/shipping'])?>"><?= Yii::t('app','Оплата и Доставка')?></a></li>
+                <li><a href="<?= Url::to(['/sale'])?>"><?= Yii::t('app','Новости и акции')?></a></li>
+                <li><a href="<?= Url::to([''])?>"><?= Yii::t('app','Гарантия')?></a></li>
+                <li><a href="<?= Url::to(['/contacts'])?>"><?= Yii::t('app', 'Сотрудничество')?></a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -48,7 +49,7 @@ use \yii\helpers\Url;
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <div class="logo">
-                    <a href="./index.html">
+                    <a href="/adamex">
                         <img src="img/logo.png" alt="">
                     </a>
                 </div>

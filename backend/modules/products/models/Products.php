@@ -8,6 +8,8 @@ use backend\modules\productColor\models\ProductColor;
 use backend\modules\productMenu\models\ProductMenu;
 use backend\modules\productSizes\models\ProductSizes;
 use backend\modules\sizes\models\Sizes;
+use yii\data\ActiveDataProvider;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "products".
@@ -93,6 +95,24 @@ class Products extends \yii\db\ActiveRecord
     public function getCarts()
     {
         return $this->hasMany(Cart::className(), ['product_id' => 'id']);
+    }
+
+    public function filterProductData($get){
+        {
+            $query = self::find();
+
+            // add conditions that should always apply here
+
+            $dataProvider = new ActiveDataProvider(['query' => $query]);
+
+            $query->innerJoinWith(['productMenus' => function ($query) use ($get) {
+                if (ArrayHelper::keyExists('menu_id', $get)) {
+                    $query->andWhere(['product_menu.menu_id' => $get['menu_id']]);
+                }
+            }]);
+
+            return $dataProvider;
+        }
     }
 
     /**

@@ -80,15 +80,20 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $menu = Menu::find()->asArray()->all();
-        $slider_products = Products::find()->with(['images','productMenus'=>function($data){
+        $query = Products::find()->with(['images','productMenus'=>function($data){
             $data->with(['menu']);
-        }])->where(['is_slider' => '1'])->orderBy(['id' => SORT_DESC])->limit(5)->asArray()->all();
+        }]);
+        $slider_products = $query->where(['is_slider' => '1'])->orderBy(['id' => SORT_DESC])->limit(5)->asArray()->all();
+        $last_admission = $query->orderBy(['created_date' => SORT_DESC])->limit(10)->asArray()->all();
+
         $sizes = Sizes::find()->asArray()->all();
+
 
         return $this->render('index', [
             'menu' => $menu,
             'slider_products' => $slider_products,
-            'sizes' => $sizes
+            'sizes' => $sizes,
+            'last_admission' => $last_admission
         ]);
     }
 
